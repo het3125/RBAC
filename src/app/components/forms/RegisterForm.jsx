@@ -15,57 +15,49 @@ export default function RegisterForm() {
 
   const onSubmit = async (data) => {
     console.log("Form Data:", data);
-    // TODO: Call backend API
   };
-
-  const inputClass =
-    "mt-1 w-full rounded-md border px-3 py-2 text-sm outline-none transition " +
-    "border-gray-300 bg-white text-black focus:ring-2 focus:ring-blue-500 " +
-    "dark:border-gray-700 dark:bg-zinc-900 dark:text-white";
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      {/* Name */}
-      <div>
-        <label className="block text-sm font-medium text-black dark:text-white">
-          Name
-        </label>
-        <input {...register("name")} className={inputClass} />
+      <div className="form-field">
+        <label className="label">Name</label>
+        <input
+          {...register("name")}
+          className={`input ${errors.name ? "input-error" : ""}`}
+        />
         {errors.name && (
-          <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+          <p className="error-text">{errors.name.message}</p>
         )}
       </div>
 
-      {/* Email */}
-      <div>
-        <label className="block text-sm font-medium text-black dark:text-white">
-          Email
-        </label>
-        <input type="email" {...register("email")} className={inputClass} />
+      <div className="form-field">
+        <label className="label">Email</label>
+        <input
+          type="email"
+          {...register("email")}
+          className={`input ${errors.email ? "input-error" : ""}`}
+        />
         {errors.email && (
-          <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+          <p className="error-text">{errors.email.message}</p>
         )}
       </div>
 
-      {/* Password */}
-      <div>
-        <label className="block text-sm font-medium text-black dark:text-white">
-          Password
-        </label>
+      <div className="form-field">
+        <label className="label">Password</label>
         <input
           type="password"
           {...register("password")}
-          className={inputClass}
+          className={`input ${errors.password ? "input-error" : ""}`}
         />
         {errors.password && (
-          <p className="mt-1 text-sm text-red-500">{errors.password.message}</p>
+          <p className="error-text">{errors.password.message}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-md bg-blue-600 py-2 text-white transition hover:bg-blue-700 disabled:opacity-50"
+        className="btn btn-primary"
       >
         {isSubmitting ? "Creating account..." : "Register"}
       </button>

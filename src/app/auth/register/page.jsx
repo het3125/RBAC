@@ -1,26 +1,29 @@
 import RegisterForm from "@/app/components/forms/RegisterForm";
+import BackButton from "@/app/components/ui/BackButton";
 import Link from "next/link";
 
 export default function RegisterPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-black">
-      <main className="w-full max-w-md rounded-lg bg-white p-8 shadow dark:bg-zinc-900">
-        <h1 className="mb-4 text-center text-2xl font-semibold text-black dark:text-white">
-          Create an Account
-        </h1>
+    <div className="page-center">
+      <main className="card">
+        {/* Back Button */}
+        <div className="mb-4">
+          <BackButton href="/" label="Back" />
+        </div>
 
-        <p className="mb-8 text-center text-sm text-gray-600 dark:text-gray-400">
+        <h1 className="title">Create an Account</h1>
+
+        <p className="subtitle">
           Fill the form below to register a new account.
         </p>
 
-        <RegisterForm />
+        <div className="mt-6">
+          <RegisterForm />
+        </div>
 
-        <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+        <p className="mt-6 text-center text-sm">
           Already have an account?{" "}
-          <Link
-            href="/auth/login"
-            className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-          >
+          <Link href="/auth/login" className="link">
             Login
           </Link>
         </p>
